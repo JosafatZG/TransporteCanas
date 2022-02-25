@@ -1,0 +1,1235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TransportesCanasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdWorkTrip" Type="int" Nullable="false" />
+          <Property Name="IdDriver" Type="int" Nullable="false" />
+          <Property Name="IdAssignmentStatus" Type="int" Nullable="false" />
+          <Property Name="TicketNumber" Type="varchar" MaxLength="25" />
+          <Property Name="IdTruck" Type="int" Nullable="false" />
+          <Property Name="IdTruckBox" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssignmentStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdState" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="Address" Type="text" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DestinationPlace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dui" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="License" Type="varchar" MaxLength="17" Nullable="false" />
+          <Property Name="Passport" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" />
+          <Property Name="IdDriverStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DriverStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OriginPlace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCity" Type="int" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCountry" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleLicense" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="IdVehiceStatus" Type="int" Nullable="false" />
+          <Property Name="IdVehicleModel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TruckBox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleLicense" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="IdVehicleType" Type="int" Nullable="false" />
+          <Property Name="IdVehiceStatus" Type="int" Nullable="false" />
+          <Property Name="IdVehicleModel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleBrand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="IdVehicleBrand" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkTrip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdDestination" Type="int" Nullable="false" />
+          <Property Name="IdOrigin" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MotoristPayment" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Assignmen__IdAss__59063A47">
+          <End Role="AssignmentStatus" Type="Self.AssignmentStatus" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssignmentStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdAssignmentStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Assignmen__IdDri__5812160E">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Assignmen__IdTru__59FA5E80">
+          <End Role="Truck" Type="Self.Truck" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truck">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdTruck" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Assignmen__IdTru__5AEE82B9">
+          <End Role="TruckBox" Type="Self.TruckBox" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckBox">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdTruckBox" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Assignmen__IdWor__571DF1D5">
+          <End Role="WorkTrip" Type="Self.WorkTrip" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkTrip">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdWorkTrip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__City__IdState__30F848ED">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="IdState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Client__IdCity__34C8D9D1">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Destinati__IdCit__37A5467C">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="DestinationPlace" Type="Self.DestinationPlace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DestinationPlace">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Driver__IdDriver__29572725">
+          <End Role="DriverStatus" Type="Self.DriverStatus" Multiplicity="1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriverStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="IdDriverStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OriginPla__IdCit__3A81B327">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="OriginPlace" Type="Self.OriginPlace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OriginPlace">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__State__IdCountry__2E1BDC42">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Truck__IdVehiceS__4BAC3F29">
+          <End Role="VehicleStatus" Type="Self.VehicleStatus" Multiplicity="1" />
+          <End Role="Truck" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="IdVehiceStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Truck__IdVehicle__4CA06362">
+          <End Role="VehicleModel" Type="Self.VehicleModel" Multiplicity="1" />
+          <End Role="Truck" Type="Self.Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleModel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="IdVehicleModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TruckBox__IdVehi__5070F446">
+          <End Role="VehicleStatus" Type="Self.VehicleStatus" Multiplicity="1" />
+          <End Role="TruckBox" Type="Self.TruckBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TruckBox">
+              <PropertyRef Name="IdVehiceStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TruckBox__IdVehi__5165187F">
+          <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="1" />
+          <End Role="TruckBox" Type="Self.TruckBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TruckBox">
+              <PropertyRef Name="IdVehicleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TruckBox__IdVehi__52593CB8">
+          <End Role="VehicleModel" Type="Self.VehicleModel" Multiplicity="1" />
+          <End Role="TruckBox" Type="Self.TruckBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleModel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TruckBox">
+              <PropertyRef Name="IdVehicleModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VehicleMo__IdVeh__47DBAE45">
+          <End Role="VehicleBrand" Type="Self.VehicleBrand" Multiplicity="1" />
+          <End Role="VehicleModel" Type="Self.VehicleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleBrand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VehicleModel">
+              <PropertyRef Name="IdVehicleBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkTrip__IdClie__3D5E1FD2">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="WorkTrip" Type="Self.WorkTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkTrip">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkTrip__IdDest__3E52440B">
+          <End Role="DestinationPlace" Type="Self.DestinationPlace" Multiplicity="1" />
+          <End Role="WorkTrip" Type="Self.WorkTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DestinationPlace">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkTrip">
+              <PropertyRef Name="IdDestination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkTrip__IdOrig__3F466844">
+          <End Role="OriginPlace" Type="Self.OriginPlace" Multiplicity="1" />
+          <End Role="WorkTrip" Type="Self.WorkTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OriginPlace">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkTrip">
+              <PropertyRef Name="IdOrigin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TransportesCanasModelStoreContainer">
+          <EntitySet Name="Assignment" EntityType="Self.Assignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssignmentStatus" EntityType="Self.AssignmentStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DestinationPlace" EntityType="Self.DestinationPlace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DriverStatus" EntityType="Self.DriverStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OriginPlace" EntityType="Self.OriginPlace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Truck" EntityType="Self.Truck" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TruckBox" EntityType="Self.TruckBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleBrand" EntityType="Self.VehicleBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleModel" EntityType="Self.VehicleModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleStatus" EntityType="Self.VehicleStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkTrip" EntityType="Self.WorkTrip" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Assignmen__IdAss__59063A47" Association="Self.FK__Assignmen__IdAss__59063A47">
+            <End Role="AssignmentStatus" EntitySet="AssignmentStatus" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Assignmen__IdDri__5812160E" Association="Self.FK__Assignmen__IdDri__5812160E">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Assignmen__IdTru__59FA5E80" Association="Self.FK__Assignmen__IdTru__59FA5E80">
+            <End Role="Truck" EntitySet="Truck" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Assignmen__IdTru__5AEE82B9" Association="Self.FK__Assignmen__IdTru__5AEE82B9">
+            <End Role="TruckBox" EntitySet="TruckBox" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Assignmen__IdWor__571DF1D5" Association="Self.FK__Assignmen__IdWor__571DF1D5">
+            <End Role="WorkTrip" EntitySet="WorkTrip" />
+            <End Role="Assignment" EntitySet="Assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__City__IdState__30F848ED" Association="Self.FK__City__IdState__30F848ED">
+            <End Role="State" EntitySet="State" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Client__IdCity__34C8D9D1" Association="Self.FK__Client__IdCity__34C8D9D1">
+            <End Role="City" EntitySet="City" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Destinati__IdCit__37A5467C" Association="Self.FK__Destinati__IdCit__37A5467C">
+            <End Role="City" EntitySet="City" />
+            <End Role="DestinationPlace" EntitySet="DestinationPlace" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Driver__IdDriver__29572725" Association="Self.FK__Driver__IdDriver__29572725">
+            <End Role="DriverStatus" EntitySet="DriverStatus" />
+            <End Role="Driver" EntitySet="Driver" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OriginPla__IdCit__3A81B327" Association="Self.FK__OriginPla__IdCit__3A81B327">
+            <End Role="City" EntitySet="City" />
+            <End Role="OriginPlace" EntitySet="OriginPlace" />
+          </AssociationSet>
+          <AssociationSet Name="FK__State__IdCountry__2E1BDC42" Association="Self.FK__State__IdCountry__2E1BDC42">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Truck__IdVehiceS__4BAC3F29" Association="Self.FK__Truck__IdVehiceS__4BAC3F29">
+            <End Role="VehicleStatus" EntitySet="VehicleStatus" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Truck__IdVehicle__4CA06362" Association="Self.FK__Truck__IdVehicle__4CA06362">
+            <End Role="VehicleModel" EntitySet="VehicleModel" />
+            <End Role="Truck" EntitySet="Truck" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TruckBox__IdVehi__5070F446" Association="Self.FK__TruckBox__IdVehi__5070F446">
+            <End Role="VehicleStatus" EntitySet="VehicleStatus" />
+            <End Role="TruckBox" EntitySet="TruckBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TruckBox__IdVehi__5165187F" Association="Self.FK__TruckBox__IdVehi__5165187F">
+            <End Role="VehicleType" EntitySet="VehicleType" />
+            <End Role="TruckBox" EntitySet="TruckBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TruckBox__IdVehi__52593CB8" Association="Self.FK__TruckBox__IdVehi__52593CB8">
+            <End Role="VehicleModel" EntitySet="VehicleModel" />
+            <End Role="TruckBox" EntitySet="TruckBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VehicleMo__IdVeh__47DBAE45" Association="Self.FK__VehicleMo__IdVeh__47DBAE45">
+            <End Role="VehicleBrand" EntitySet="VehicleBrand" />
+            <End Role="VehicleModel" EntitySet="VehicleModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkTrip__IdClie__3D5E1FD2" Association="Self.FK__WorkTrip__IdClie__3D5E1FD2">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="WorkTrip" EntitySet="WorkTrip" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkTrip__IdDest__3E52440B" Association="Self.FK__WorkTrip__IdDest__3E52440B">
+            <End Role="DestinationPlace" EntitySet="DestinationPlace" />
+            <End Role="WorkTrip" EntitySet="WorkTrip" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkTrip__IdOrig__3F466844" Association="Self.FK__WorkTrip__IdOrig__3F466844">
+            <End Role="OriginPlace" EntitySet="OriginPlace" />
+            <End Role="WorkTrip" EntitySet="WorkTrip" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TransportesCanasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdWorkTrip" Type="Int32" Nullable="false" />
+          <Property Name="IdDriver" Type="Int32" Nullable="false" />
+          <Property Name="IdAssignmentStatus" Type="Int32" Nullable="false" />
+          <Property Name="TicketNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IdTruck" Type="Int32" Nullable="false" />
+          <Property Name="IdTruckBox" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="AssignmentStatu" Relationship="Self.FK__Assignmen__IdAss__47DBAE45" FromRole="Assignment" ToRole="AssignmentStatus" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK__Assignmen__IdDri__46E78A0C" FromRole="Assignment" ToRole="Driver" />
+          <NavigationProperty Name="WorkTrip" Relationship="Self.FK__Assignmen__IdWor__45F365D3" FromRole="Assignment" ToRole="WorkTrip" />
+          <NavigationProperty Name="Truck" Relationship="TransportesCanasModel.FK__Assignmen__IdTru__59FA5E80" FromRole="Assignment" ToRole="Truck" />
+          <NavigationProperty Name="TruckBox" Relationship="TransportesCanasModel.FK__Assignmen__IdTru__5AEE82B9" FromRole="Assignment" ToRole="TruckBox" />
+        </EntityType>
+        <EntityType Name="AssignmentStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Assignments" Relationship="Self.FK__Assignmen__IdAss__47DBAE45" FromRole="AssignmentStatus" ToRole="Assignment" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="WorkTrips" Relationship="Self.FK__WorkTrip__IdClie__32E0915F" FromRole="Client" ToRole="WorkTrip" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="TransportesCanasModel.FK__Client__IdCity__34C8D9D1" FromRole="Client" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dui" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="License" Type="String" MaxLength="17" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Passport" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IdDriverStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Assignments" Relationship="Self.FK__Assignmen__IdDri__46E78A0C" FromRole="Driver" ToRole="Assignment" />
+          <NavigationProperty Name="DriverStatu" Relationship="Self.FK__Driver__IdDriver__29572725" FromRole="Driver" ToRole="DriverStatus" />
+        </EntityType>
+        <EntityType Name="DriverStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Drivers" Relationship="Self.FK__Driver__IdDriver__29572725" FromRole="DriverStatus" ToRole="Driver" />
+        </EntityType>
+        <EntityType Name="VehicleStatu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Trucks" Relationship="TransportesCanasModel.FK__Truck__IdVehiceS__4BAC3F29" FromRole="VehicleStatu" ToRole="Truck" />
+          <NavigationProperty Name="TruckBoxes" Relationship="TransportesCanasModel.FK__TruckBox__IdVehi__5070F446" FromRole="VehicleStatu" ToRole="TruckBox" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TruckBoxes" Relationship="TransportesCanasModel.FK__TruckBox__IdVehi__5165187F" FromRole="VehicleType" ToRole="TruckBox" />
+        </EntityType>
+        <EntityType Name="WorkTrip">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdDestination" Type="Int32" Nullable="false" />
+          <Property Name="IdOrigin" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MotoristPayment" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Assignments" Relationship="Self.FK__Assignmen__IdWor__45F365D3" FromRole="WorkTrip" ToRole="Assignment" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__WorkTrip__IdClie__32E0915F" FromRole="WorkTrip" ToRole="Client" />
+          <NavigationProperty Name="DestinationPlace" Relationship="TransportesCanasModel.FK__WorkTrip__IdDest__3D5E1FD2" FromRole="WorkTrip" ToRole="DestinationPlace" />
+          <NavigationProperty Name="OriginPlace" Relationship="TransportesCanasModel.FK__WorkTrip__IdOrig__3E52440B" FromRole="WorkTrip" ToRole="OriginPlace" />
+        </EntityType>
+        <Association Name="FK__Assignmen__IdAss__47DBAE45">
+          <End Role="AssignmentStatus" Type="Self.AssignmentStatu" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssignmentStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdAssignmentStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Assignmen__IdDri__46E78A0C">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Assignmen__IdWor__45F365D3">
+          <End Role="WorkTrip" Type="Self.WorkTrip" Multiplicity="1" />
+          <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkTrip">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdWorkTrip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkTrip__IdClie__32E0915F">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="WorkTrip" Type="Self.WorkTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkTrip">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Driver__IdDriver__29572725">
+          <End Role="DriverStatus" Type="Self.DriverStatu" Multiplicity="1" />
+          <End Role="Driver" Type="Self.Driver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DriverStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Driver">
+              <PropertyRef Name="IdDriverStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TransportesCanasEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Assignments" EntityType="Self.Assignment" />
+          <EntitySet Name="AssignmentStatus" EntityType="Self.AssignmentStatu" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Drivers" EntityType="Self.Driver" />
+          <EntitySet Name="DriverStatus" EntityType="Self.DriverStatu" />
+          <EntitySet Name="VehicleStatus" EntityType="Self.VehicleStatu" />
+          <EntitySet Name="VehicleTypes" EntityType="Self.VehicleType" />
+          <EntitySet Name="WorkTrips" EntityType="Self.WorkTrip" />
+          <AssociationSet Name="FK__Assignmen__IdAss__47DBAE45" Association="Self.FK__Assignmen__IdAss__47DBAE45">
+            <End Role="AssignmentStatus" EntitySet="AssignmentStatus" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Assignmen__IdDri__46E78A0C" Association="Self.FK__Assignmen__IdDri__46E78A0C">
+            <End Role="Driver" EntitySet="Drivers" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Assignmen__IdWor__45F365D3" Association="Self.FK__Assignmen__IdWor__45F365D3">
+            <End Role="WorkTrip" EntitySet="WorkTrips" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkTrip__IdClie__32E0915F" Association="Self.FK__WorkTrip__IdClie__32E0915F">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="WorkTrip" EntitySet="WorkTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Driver__IdDriver__29572725" Association="Self.FK__Driver__IdDriver__29572725">
+            <End Role="DriverStatus" EntitySet="DriverStatus" />
+            <End Role="Driver" EntitySet="Drivers" />
+          </AssociationSet>
+          <EntitySet Name="Cities" EntityType="TransportesCanasModel.City" />
+          <EntitySet Name="Countries" EntityType="TransportesCanasModel.Country" />
+          <EntitySet Name="States" EntityType="TransportesCanasModel.State" />
+          <AssociationSet Name="FK__City__IdState__33D4B598" Association="TransportesCanasModel.FK__City__IdState__33D4B598">
+            <End Role="State" EntitySet="States" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__State__IdCountry__30F848ED" Association="TransportesCanasModel.FK__State__IdCountry__30F848ED">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="State" EntitySet="States" />
+          </AssociationSet>
+          <EntitySet Name="DestinationPlaces" EntityType="TransportesCanasModel.DestinationPlace" />
+          <EntitySet Name="OriginPlaces" EntityType="TransportesCanasModel.OriginPlace" />
+          <AssociationSet Name="FK__Destinati__IdCit__36B12243" Association="TransportesCanasModel.FK__Destinati__IdCit__36B12243">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="DestinationPlace" EntitySet="DestinationPlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OriginPla__IdCit__398D8EEE" Association="TransportesCanasModel.FK__OriginPla__IdCit__398D8EEE">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="OriginPlace" EntitySet="OriginPlaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkTrip__IdDest__3D5E1FD2" Association="TransportesCanasModel.FK__WorkTrip__IdDest__3D5E1FD2">
+            <End Role="DestinationPlace" EntitySet="DestinationPlaces" />
+            <End Role="WorkTrip" EntitySet="WorkTrips" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkTrip__IdOrig__3E52440B" Association="TransportesCanasModel.FK__WorkTrip__IdOrig__3E52440B">
+            <End Role="OriginPlace" EntitySet="OriginPlaces" />
+            <End Role="WorkTrip" EntitySet="WorkTrips" />
+          </AssociationSet>
+          <EntitySet Name="VehicleBrands" EntityType="TransportesCanasModel.VehicleBrand" />
+          <EntitySet Name="VehicleModels" EntityType="TransportesCanasModel.VehicleModel" />
+          <AssociationSet Name="FK__Client__IdCity__34C8D9D1" Association="TransportesCanasModel.FK__Client__IdCity__34C8D9D1">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Client" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VehicleMo__IdVeh__47DBAE45" Association="TransportesCanasModel.FK__VehicleMo__IdVeh__47DBAE45">
+            <End Role="VehicleBrand" EntitySet="VehicleBrands" />
+            <End Role="VehicleModel" EntitySet="VehicleModels" />
+          </AssociationSet>
+          <EntitySet Name="Trucks" EntityType="TransportesCanasModel.Truck" />
+          <EntitySet Name="TruckBoxes" EntityType="TransportesCanasModel.TruckBox" />
+          <AssociationSet Name="FK__Assignmen__IdTru__59FA5E80" Association="TransportesCanasModel.FK__Assignmen__IdTru__59FA5E80">
+            <End Role="Truck" EntitySet="Trucks" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Assignmen__IdTru__5AEE82B9" Association="TransportesCanasModel.FK__Assignmen__IdTru__5AEE82B9">
+            <End Role="TruckBox" EntitySet="TruckBoxes" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Truck__IdVehiceS__4BAC3F29" Association="TransportesCanasModel.FK__Truck__IdVehiceS__4BAC3F29">
+            <End Role="VehicleStatu" EntitySet="VehicleStatus" />
+            <End Role="Truck" EntitySet="Trucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Truck__IdVehicle__4CA06362" Association="TransportesCanasModel.FK__Truck__IdVehicle__4CA06362">
+            <End Role="VehicleModel" EntitySet="VehicleModels" />
+            <End Role="Truck" EntitySet="Trucks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TruckBox__IdVehi__5070F446" Association="TransportesCanasModel.FK__TruckBox__IdVehi__5070F446">
+            <End Role="VehicleStatu" EntitySet="VehicleStatus" />
+            <End Role="TruckBox" EntitySet="TruckBoxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TruckBox__IdVehi__5165187F" Association="TransportesCanasModel.FK__TruckBox__IdVehi__5165187F">
+            <End Role="VehicleType" EntitySet="VehicleTypes" />
+            <End Role="TruckBox" EntitySet="TruckBoxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TruckBox__IdVehi__52593CB8" Association="TransportesCanasModel.FK__TruckBox__IdVehi__52593CB8">
+            <End Role="VehicleModel" EntitySet="VehicleModels" />
+            <End Role="TruckBox" EntitySet="TruckBoxes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdState" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="State" Relationship="TransportesCanasModel.FK__City__IdState__33D4B598" FromRole="City" ToRole="State" />
+          <NavigationProperty Name="DestinationPlaces" Relationship="TransportesCanasModel.FK__Destinati__IdCit__36B12243" FromRole="City" ToRole="DestinationPlace" />
+          <NavigationProperty Name="OriginPlaces" Relationship="TransportesCanasModel.FK__OriginPla__IdCit__398D8EEE" FromRole="City" ToRole="OriginPlace" />
+          <NavigationProperty Name="Clients" Relationship="TransportesCanasModel.FK__Client__IdCity__34C8D9D1" FromRole="City" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="States" Relationship="TransportesCanasModel.FK__State__IdCountry__30F848ED" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdCountry" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="TransportesCanasModel.FK__City__IdState__33D4B598" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="TransportesCanasModel.FK__State__IdCountry__30F848ED" FromRole="State" ToRole="Country" />
+        </EntityType>
+        <Association Name="FK__City__IdState__33D4B598">
+          <End Type="TransportesCanasModel.State" Role="State" Multiplicity="1" />
+          <End Type="TransportesCanasModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="IdState" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__State__IdCountry__30F848ED">
+          <End Type="TransportesCanasModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="TransportesCanasModel.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="IdCountry" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DestinationPlace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="City" Relationship="TransportesCanasModel.FK__Destinati__IdCit__36B12243" FromRole="DestinationPlace" ToRole="City" />
+          <NavigationProperty Name="WorkTrips" Relationship="TransportesCanasModel.FK__WorkTrip__IdDest__3D5E1FD2" FromRole="DestinationPlace" ToRole="WorkTrip" />
+        </EntityType>
+        <EntityType Name="OriginPlace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCity" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="City" Relationship="TransportesCanasModel.FK__OriginPla__IdCit__398D8EEE" FromRole="OriginPlace" ToRole="City" />
+          <NavigationProperty Name="WorkTrips" Relationship="TransportesCanasModel.FK__WorkTrip__IdOrig__3E52440B" FromRole="OriginPlace" ToRole="WorkTrip" />
+        </EntityType>
+        <Association Name="FK__Destinati__IdCit__36B12243">
+          <End Type="TransportesCanasModel.City" Role="City" Multiplicity="1" />
+          <End Type="TransportesCanasModel.DestinationPlace" Role="DestinationPlace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DestinationPlace">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OriginPla__IdCit__398D8EEE">
+          <End Type="TransportesCanasModel.City" Role="City" Multiplicity="1" />
+          <End Type="TransportesCanasModel.OriginPlace" Role="OriginPlace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OriginPlace">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkTrip__IdDest__3D5E1FD2">
+          <End Type="TransportesCanasModel.DestinationPlace" Role="DestinationPlace" Multiplicity="1" />
+          <End Type="TransportesCanasModel.WorkTrip" Role="WorkTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DestinationPlace">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkTrip">
+              <PropertyRef Name="IdDestination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkTrip__IdOrig__3E52440B">
+          <End Type="TransportesCanasModel.OriginPlace" Role="OriginPlace" Multiplicity="1" />
+          <End Type="TransportesCanasModel.WorkTrip" Role="WorkTrip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OriginPlace">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WorkTrip">
+              <PropertyRef Name="IdOrigin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VehicleBrand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VehicleModels" Relationship="TransportesCanasModel.FK__VehicleMo__IdVeh__47DBAE45" FromRole="VehicleBrand" ToRole="VehicleModel" />
+        </EntityType>
+        <EntityType Name="VehicleModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdVehicleBrand" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VehicleBrand" Relationship="TransportesCanasModel.FK__VehicleMo__IdVeh__47DBAE45" FromRole="VehicleModel" ToRole="VehicleBrand" />
+          <NavigationProperty Name="Trucks" Relationship="TransportesCanasModel.FK__Truck__IdVehicle__4CA06362" FromRole="VehicleModel" ToRole="Truck" />
+          <NavigationProperty Name="TruckBoxes" Relationship="TransportesCanasModel.FK__TruckBox__IdVehi__52593CB8" FromRole="VehicleModel" ToRole="TruckBox" />
+        </EntityType>
+        <Association Name="FK__Client__IdCity__34C8D9D1">
+          <End Type="TransportesCanasModel.City" Role="City" Multiplicity="1" />
+          <End Type="TransportesCanasModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VehicleMo__IdVeh__47DBAE45">
+          <End Type="TransportesCanasModel.VehicleBrand" Role="VehicleBrand" Multiplicity="1" />
+          <End Type="TransportesCanasModel.VehicleModel" Role="VehicleModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleBrand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VehicleModel">
+              <PropertyRef Name="IdVehicleBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Truck">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleLicense" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="IdVehiceStatus" Type="Int32" Nullable="false" />
+          <Property Name="IdVehicleModel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Assignments" Relationship="TransportesCanasModel.FK__Assignmen__IdTru__59FA5E80" FromRole="Truck" ToRole="Assignment" />
+          <NavigationProperty Name="VehicleStatu" Relationship="TransportesCanasModel.FK__Truck__IdVehiceS__4BAC3F29" FromRole="Truck" ToRole="VehicleStatu" />
+          <NavigationProperty Name="VehicleModel" Relationship="TransportesCanasModel.FK__Truck__IdVehicle__4CA06362" FromRole="Truck" ToRole="VehicleModel" />
+        </EntityType>
+        <EntityType Name="TruckBox">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleLicense" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="IdVehicleType" Type="Int32" Nullable="false" />
+          <Property Name="IdVehiceStatus" Type="Int32" Nullable="false" />
+          <Property Name="IdVehicleModel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Assignments" Relationship="TransportesCanasModel.FK__Assignmen__IdTru__5AEE82B9" FromRole="TruckBox" ToRole="Assignment" />
+          <NavigationProperty Name="VehicleStatu" Relationship="TransportesCanasModel.FK__TruckBox__IdVehi__5070F446" FromRole="TruckBox" ToRole="VehicleStatu" />
+          <NavigationProperty Name="VehicleType" Relationship="TransportesCanasModel.FK__TruckBox__IdVehi__5165187F" FromRole="TruckBox" ToRole="VehicleType" />
+          <NavigationProperty Name="VehicleModel" Relationship="TransportesCanasModel.FK__TruckBox__IdVehi__52593CB8" FromRole="TruckBox" ToRole="VehicleModel" />
+        </EntityType>
+        <Association Name="FK__Assignmen__IdTru__59FA5E80">
+          <End Type="TransportesCanasModel.Truck" Role="Truck" Multiplicity="1" />
+          <End Type="TransportesCanasModel.Assignment" Role="Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truck">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdTruck" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Assignmen__IdTru__5AEE82B9">
+          <End Type="TransportesCanasModel.TruckBox" Role="TruckBox" Multiplicity="1" />
+          <End Type="TransportesCanasModel.Assignment" Role="Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TruckBox">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="IdTruckBox" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Truck__IdVehiceS__4BAC3F29">
+          <End Type="TransportesCanasModel.VehicleStatu" Role="VehicleStatu" Multiplicity="1" />
+          <End Type="TransportesCanasModel.Truck" Role="Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleStatu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="IdVehiceStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Truck__IdVehicle__4CA06362">
+          <End Type="TransportesCanasModel.VehicleModel" Role="VehicleModel" Multiplicity="1" />
+          <End Type="TransportesCanasModel.Truck" Role="Truck" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleModel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Truck">
+              <PropertyRef Name="IdVehicleModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TruckBox__IdVehi__5070F446">
+          <End Type="TransportesCanasModel.VehicleStatu" Role="VehicleStatu" Multiplicity="1" />
+          <End Type="TransportesCanasModel.TruckBox" Role="TruckBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleStatu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TruckBox">
+              <PropertyRef Name="IdVehiceStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TruckBox__IdVehi__5165187F">
+          <End Type="TransportesCanasModel.VehicleType" Role="VehicleType" Multiplicity="1" />
+          <End Type="TransportesCanasModel.TruckBox" Role="TruckBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TruckBox">
+              <PropertyRef Name="IdVehicleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TruckBox__IdVehi__52593CB8">
+          <End Type="TransportesCanasModel.VehicleModel" Role="VehicleModel" Multiplicity="1" />
+          <End Type="TransportesCanasModel.TruckBox" Role="TruckBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleModel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TruckBox">
+              <PropertyRef Name="IdVehicleModel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TransportesCanasModelStoreContainer" CdmEntityContainer="TransportesCanasEntities">
+          <EntitySetMapping Name="Assignments">
+            <EntityTypeMapping TypeName="TransportesCanasModel.Assignment">
+              <MappingFragment StoreEntitySet="Assignment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdWorkTrip" ColumnName="IdWorkTrip" />
+                <ScalarProperty Name="IdDriver" ColumnName="IdDriver" />
+                <ScalarProperty Name="IdAssignmentStatus" ColumnName="IdAssignmentStatus" />
+                <ScalarProperty Name="TicketNumber" ColumnName="TicketNumber" />
+                <ScalarProperty Name="IdTruck" ColumnName="IdTruck" />
+                <ScalarProperty Name="IdTruckBox" ColumnName="IdTruckBox" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssignmentStatus">
+            <EntityTypeMapping TypeName="TransportesCanasModel.AssignmentStatu">
+              <MappingFragment StoreEntitySet="AssignmentStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="TransportesCanasModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drivers">
+            <EntityTypeMapping TypeName="TransportesCanasModel.Driver">
+              <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Dui" ColumnName="Dui" />
+                <ScalarProperty Name="License" ColumnName="License" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="IdDriverStatus" ColumnName="IdDriverStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DriverStatus">
+            <EntityTypeMapping TypeName="TransportesCanasModel.DriverStatu">
+              <MappingFragment StoreEntitySet="DriverStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleStatus">
+            <EntityTypeMapping TypeName="TransportesCanasModel.VehicleStatu">
+              <MappingFragment StoreEntitySet="VehicleStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleTypes">
+            <EntityTypeMapping TypeName="TransportesCanasModel.VehicleType">
+              <MappingFragment StoreEntitySet="VehicleType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkTrips">
+            <EntityTypeMapping TypeName="TransportesCanasModel.WorkTrip">
+              <MappingFragment StoreEntitySet="WorkTrip">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdDestination" ColumnName="IdDestination" />
+                <ScalarProperty Name="IdOrigin" ColumnName="IdOrigin" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MotoristPayment" ColumnName="MotoristPayment" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="TransportesCanasModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="IdState" ColumnName="IdState" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="TransportesCanasModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="TransportesCanasModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="IdCountry" ColumnName="IdCountry" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DestinationPlaces">
+            <EntityTypeMapping TypeName="TransportesCanasModel.DestinationPlace">
+              <MappingFragment StoreEntitySet="DestinationPlace">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OriginPlaces">
+            <EntityTypeMapping TypeName="TransportesCanasModel.OriginPlace">
+              <MappingFragment StoreEntitySet="OriginPlace">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleBrands">
+            <EntityTypeMapping TypeName="TransportesCanasModel.VehicleBrand">
+              <MappingFragment StoreEntitySet="VehicleBrand">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleModels">
+            <EntityTypeMapping TypeName="TransportesCanasModel.VehicleModel">
+              <MappingFragment StoreEntitySet="VehicleModel">
+                <ScalarProperty Name="IdVehicleBrand" ColumnName="IdVehicleBrand" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trucks">
+            <EntityTypeMapping TypeName="TransportesCanasModel.Truck">
+              <MappingFragment StoreEntitySet="Truck">
+                <ScalarProperty Name="IdVehicleModel" ColumnName="IdVehicleModel" />
+                <ScalarProperty Name="IdVehiceStatus" ColumnName="IdVehiceStatus" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="VehicleLicense" ColumnName="VehicleLicense" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TruckBoxes">
+            <EntityTypeMapping TypeName="TransportesCanasModel.TruckBox">
+              <MappingFragment StoreEntitySet="TruckBox">
+                <ScalarProperty Name="IdVehicleModel" ColumnName="IdVehicleModel" />
+                <ScalarProperty Name="IdVehiceStatus" ColumnName="IdVehiceStatus" />
+                <ScalarProperty Name="IdVehicleType" ColumnName="IdVehicleType" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="VehicleLicense" ColumnName="VehicleLicense" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
